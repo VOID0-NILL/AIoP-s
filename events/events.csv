@@ -1,0 +1,9 @@
+timestamp,event_type,service,description
+2026-11-20 02:00:00,maintenance,database,Nightly backup started
+2026-11-20 02:30:00,maintenance,database,Nightly backup completed
+2026-11-20 09:00:00,deploy,web-server,Deployed web-server v1.8
+2026-11-20 13:58:00,deploy,fee-service,Deployed fee-service v2.3
+2026-11-20 14:07:00,alert,database,High latency alert fired
+2026-11-20 14:10:00,alert,app-server,High error rate alert fired
+2026-11-20 14:45:00,rollback,fee-service,Rolled back fee-service to v2.2
+2026-11-20 14:55:00,recovery,database,Connection pool back to normal

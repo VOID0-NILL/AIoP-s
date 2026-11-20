@@ -1,0 +1,2 @@
+incident_id,start,end,root_cause,affected_services
+INC-001,2026-11-20 14:05:00,2026-11-20 14:55:00,fee-service v2.3 exhausted DB connection pool,fee-service;database;app-server;web-server

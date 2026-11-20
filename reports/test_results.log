@@ -1,0 +1,20 @@
+test_incident_fires_and_groups_into_one (test_pipeline.TestAlerts.test_incident_fires_and_groups_into_one) ... ok
+test_no_alerts_on_normal_day_part (test_pipeline.TestAlerts.test_no_alerts_on_normal_day_part) ... ok
+test_short_breach_does_not_fire (test_pipeline.TestAlerts.test_short_breach_does_not_fire) ... ok
+test_incident_is_detected (test_pipeline.TestDetection.test_incident_is_detected) ... ok
+test_missing_values_do_not_crash (test_pipeline.TestDetection.test_missing_values_do_not_crash) ... ok
+test_noisy_data_reports_metrics (test_pipeline.TestDetection.test_noisy_data_reports_metrics) ... ok
+test_normal_data_has_no_anomalies (test_pipeline.TestDetection.test_normal_data_has_no_anomalies) ... ok
+test_single_spike_is_not_flagged (test_pipeline.TestDetection.test_single_spike_is_not_flagged) ... ok
+test_exit_codes (test_pipeline.TestHealthCheck.test_exit_codes) ... ok
+test_missing_file_returns_3 (test_pipeline.TestHealthCheck.test_missing_file_returns_3) ... 2026-11-20 00:30:12,693 ERROR Cannot run check: [Errno 2] No such file or directory: 'does_not_exist.csv'
+ok
+test_malformed_line_returns_none (test_pipeline.TestParser.test_malformed_line_returns_none) ... ok
+test_valid_line (test_pipeline.TestParser.test_valid_line) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.624s
+
+OK
+
+  [noisy-data result] {'tp': 49, 'fp': 0, 'fn': 1, 'precision': 1.0, 'recall': 0.98}

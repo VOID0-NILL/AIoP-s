@@ -1,0 +1,10 @@
+[ 0.31s] 1. Parse logs
+[ 0.03s] 2. Load metrics
+[ 0.01s] 3. Load events
+[ 0.12s] 4. Detect anomalies
+    detection vs ground truth: {'tp': 50, 'fp': 0, 'fn': 0, 'precision': 1.0, 'recall': 1.0}
+[ 0.02s] 5. Evaluate alert rules
+    2 alert(s) in 1 group(s)
+[ 0.07s] 6. Correlate + incident report
+
+Done. See reports/incident_report.md, reports/correlated_timeline.csv, charts/anomalies.png
