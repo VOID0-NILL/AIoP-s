@@ -1,0 +1,28 @@
+Reproducibility check - Sat Nov 21 09:41:18 EST 2026
+Commit: 1edc99f
+Fresh clone of https://github.com/VOID0-NILL/AIoP-s
+logs/portal.log      : 9115 lines
+metrics/metrics.csv  : 1440 rows
+events/events.csv    : 8 events
+labels/incident_labels.csv : 1 incident (INC-001)
+[ 0.22s] 1. Parse logs
+[ 0.01s] 2. Load metrics
+[ 0.00s] 3. Load events
+[ 0.11s] 4. Detect anomalies
+    detection vs ground truth: {'tp': 50, 'fp': 0, 'fn': 0, 'precision': 1.0, 'recall': 1.0}
+[ 0.04s] 5. Evaluate alert rules
+    2 alert(s) in 1 group(s)
+[ 0.07s] 6. Correlate + incident report
+
+Done. See reports/incident_report.md, reports/correlated_timeline.csv, charts/anomalies.png
+
+OK
+
+  [noisy-data result] {'tp': 49, 'fp': 0, 'fn': 1, 'precision': 1.0, 'recall': 0.98}
+total_minutes: 1440
+bad_minutes: 48
+sli_percent: 96.67
+slo_percent: 99.5
+error_budget_minutes: 7.2
+budget_consumed_percent: 666.7
+slo_met: False
