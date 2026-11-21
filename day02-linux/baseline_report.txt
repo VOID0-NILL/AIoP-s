@@ -1,0 +1,46 @@
+Fri Nov 20 02:04:40 EST 2026
+--- OS
+Linux 10 6.6.15-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.6.15-2kali1 (2024-05-17) x86_64 GNU/Linux
+--- uptime
+ 02:04:40 up  2:08,  1 user,  load average: 2.03, 2.23, 2.36
+--- cpu
+Architecture:                       x86_64
+CPU op-mode(s):                     32-bit, 64-bit
+Address sizes:                      36 bits physical, 48 bits virtual
+Byte Order:                         Little Endian
+CPU(s):                             2
+On-line CPU(s) list:                0,1
+Vendor ID:                          GenuineIntel
+Model name:                         Intel(R) Core(TM) i3 CPU       M 380  @ 2.53GHz
+CPU family:                         6
+Model:                              37
+Thread(s) per core:                 1
+Core(s) per socket:                 2
+Socket(s):                          1
+Stepping:                           5
+BogoMIPS:                           5054.87
+--- memory
+               total        used        free      shared  buff/cache   available
+Mem:           970Mi       574Mi        65Mi       8.1Mi       487Mi       395Mi
+Swap:          974Mi       605Mi       369Mi
+--- disk
+Filesystem      Size  Used Avail Use% Mounted on
+udev            443M     0  443M   0% /dev
+tmpfs            98M 1008K   97M   2% /run
+/dev/sda1        16G   14G  1.7G  89% /
+tmpfs           486M     0  486M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs            98M  112K   97M   1% /run/user/1000
+/dev/sdb1        15G   13G  1.6G  90% /media/ankit/LOCAL HOST
+--- ports
+Netid State  Recv-Q Send-Q                   Local Address:Port Peer Address:Port
+udp   UNCONN 0      0      [fe80::a00:27ff:fe05:75d9]%eth0:546          [::]:*   
+--- top processes
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+ankit       4666  4.0 14.8 2951648 147488 ?      Sl   00:07   4:42 /usr/lib/firefox-esr/firefox-esr
+ankit    1005885  0.7  7.3 565264 73080 pts/0    Sl   01:58   0:02 /usr/bin/ristretto /home/ankit/Desktop/AIop/aiops-internship/charts/dashboard.png
+root         618  5.3  6.5 491584 65380 tty7     Ssl+ Nov19   6:54 /usr/lib/xorg/Xorg :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+ankit       3060  0.3  3.5 691008 35628 ?        Ssl  00:04   0:23 /usr/bin/Thunar --daemon
+ankit       2887  0.2  2.5 758024 25508 ?        Sl   00:04   0:14 xfdesktop --display :0.0 --sm-client-id 25e401da7-b366-4e0d-91e1-058d9bc44bc5
+ankit       9709  0.4  2.5 455060 24900 ?        Sl   00:16   0:28 /usr/bin/qterminal
+ankit       4748  0.0  2.4 2456064 24308 ?       Sl   00:07   0:05 /usr/lib/firefox-esr/firefox-esr -contentproc -childID 1 -isForBrowser -prefsLen 27769 -prefMapSize 236440 -jsInitLen 240916 -parentBuildID 20240506144012 -appDir /usr/lib/firefox-esr/browser {9080e2d3-c307-43f4-a546-62f2002e07ae} 4666 true tab
