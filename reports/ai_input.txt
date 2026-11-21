@@ -1,0 +1,28 @@
+INCIDENT DATA (synthetic College Portal; no real users or systems)
+
+Breach window: 2026-11-20 14:07:00 to 2026-11-20 14:54:00 (48 minutes)
+
+Alerts:
+- HighLatency (critical) fired at 2026-11-20 14:09:00, peak value 2259.0, routed to oncall-app-team
+- HighErrorRate (critical) fired at 2026-11-20 14:09:00, peak value 21.7, routed to oncall-app-team
+
+Metrics (average in the 30 minutes before the breach -> maximum during the breach):
+- latency_ms: 217.8 ms -> 2259.0 ms
+- error_rate_percent: 0.6 % -> 21.7 %
+- cpu_percent: 50.2 % -> 90.5 %
+- memory_percent: 56.8 % -> 73.9 %
+- request_rate_per_min: 976 before -> 745 average during
+
+Timeline (time | source | where | what):
+- 2026-11-20 13:43:10 | log | app-server | first ERROR 'Request timeout calling notification-service' (x5)
+- 2026-11-20 13:58:00 | event | fee-service | deploy: Deployed fee-service v2.3
+- 2026-11-20 14:05:00 | log | web-server | first ERROR '502 Bad Gateway /fee/pay' (x157)
+- 2026-11-20 14:06:11 | log | fee-service | first ERROR 'Connection pool exhausted (max=20)' (x143)
+- 2026-11-20 14:06:51 | log | fee-service | first ERROR 'DB connection timeout after 30s' (x141)
+- 2026-11-20 14:07:00 | event | database | alert: High latency alert fired
+- 2026-11-20 14:07:37 | log | app-server | first ERROR 'Upstream fee-service returned 500' (x139)
+- 2026-11-20 14:09:00 | alert | oncall-app-team | HighLatency (critical) peak=2259.0
+- 2026-11-20 14:09:00 | alert | oncall-app-team | HighErrorRate (critical) peak=21.7
+- 2026-11-20 14:10:00 | event | app-server | alert: High error rate alert fired
+- 2026-11-20 14:45:00 | event | fee-service | rollback: Rolled back fee-service to v2.2
+- 2026-11-20 14:55:00 | event | database | recovery: Connection pool back to normal

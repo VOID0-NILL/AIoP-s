@@ -1,0 +1,29 @@
+1. SUMMARY
+Between 14:07 and 14:54 (48 minutes) the College Portal had a critical incident. Latency rose from an average of 217.8 ms to a maximum of 2259.0 ms, and the error rate rose from 0.6% to 21.7%. Errors came from fee-service, app-server and web-server, and both HighLatency and HighErrorRate alerts fired at 14:09. fee-service v2.3 was deployed at 13:58, and a rollback to v2.2 happened at 14:45.
+
+2. KEY TIMESTAMPS
+- 13:58:00 - Deployed fee-service v2.3
+- 14:05:00 - first 502 Bad Gateway error on web-server
+- 14:06:11 - first "Connection pool exhausted (max=20)" error on fee-service
+- 14:06:51 - first "DB connection timeout after 30s" error on fee-service
+- 14:09:00 - HighLatency and HighErrorRate alerts fired
+- 14:45:00 - Rolled back fee-service to v2.2
+- 14:54:00 - end of the breach window
+- 14:55:00 - database event: connection pool back to normal
+
+3. POSSIBLE CAUSES (hypotheses)
+- Hypothesis 1: the fee-service v2.3 deploy caused the problem. Evidence: the deploy at 13:58 is 9 minutes before the breach started at 14:07, and fee-service errors begin at 14:06:11.
+- Hypothesis 2: the database connection pool was exhausted. Evidence: "Connection pool exhausted (max=20)" and "DB connection timeout after 30s" errors on fee-service, and a database event at 14:55 saying the pool was back to normal.
+- Hypothesis 3: a traffic surge. Evidence against it: request rate fell from 976 to an average of 745 per minute during the breach, so this is unlikely.
+
+4. INVESTIGATION QUESTIONS
+- What changed in fee-service between v2.2 and v2.3 (connection handling, pool size, queries)?
+- How many database connections did fee-service hold open before and during 14:05-14:55?
+- Why did recovery take until 14:55, 10 minutes after the 14:45 rollback?
+
+5. ASSUMPTIONS AND UNCERTAINTY
+- The data does not prove the deploy caused the incident; it only shows the events happened close together in time.
+- The first-error times for different services are within about two minutes of each other, so the order of failure is not conclusive.
+- The error 'Request timeout calling notification-service' at 13:43:10 (x5) is before the deploy and is not linked to this incident in the data.
+- A "High latency alert fired" event at 14:07 and the HighLatency alert at 14:09 appear as two separate records; the data does not explain the 2-minute difference.
+- Impact on users (number of failed fee payments) is not in the data.
