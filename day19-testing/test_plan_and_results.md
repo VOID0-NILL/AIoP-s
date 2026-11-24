@@ -21,25 +21,24 @@ Run: `python3 -m unittest discover -s tests -v` (12 tests)
 |---|---|---|
 | Precision, clean data | 1.0 | pipeline output |
 | Recall, clean data | 1.0 | pipeline output |
-| Recall, noisy latency (6x) | 0.56 | test output |
+| Recall, noisy latency (6x) | 0.98 | test output |
 | Tests passing | 12 of 12 | test output |
-| Processing time (whole pipeline) | (write the total from your run, in seconds) | pipeline output |
+| Processing time (whole pipeline) | 0.56 seconds | pipeline output |
 | Alerts | 2 alerts in 1 group | pipeline output |
 
 ## 3. Bug and issue log
 
 | # | What went wrong | How it was found | What I changed | Result after fix |
 |---|---|---|---|---|
-| 1 | (write in your own words: the detector's baseline) | | | |
-| 2 | (write in your own words: the AI summary checker accepted "9 minutes") | | | |
+| 1 | The first anomaly detector missed most of the incident. During a long incident its rolling baseline kept absorbing the broken values and started treating them as normal. | Comparing the flagged minutes with the ground-truth labels gave recall of only 0.12. | Points flagged as unusual are no longer added to the baseline, so the baseline stays at the last known-normal behaviour. | Recall 1.0, precision 1.0 on the clean data; 0.98 recall with noisier latency. |
+| 2 | The AI-summary checker accepted "9 minutes" as found in the source, although that number was calculated and not in the data. | Reading the checker output by hand: the other calculated number (10 minutes) was flagged but 9 minutes was not. | The check now matches the number and its unit as a whole, instead of a plain substring (the "9" was matching inside "2259.0"). | Both calculated numbers are flagged; a wrong unit (for example "2259 minutes") is flagged too. |
 
-Hints for the bug log, to explain in your own words:
-- Bug 1: the first detector version had recall 0.12. During a long incident the rolling baseline learned the broken values as normal. After the fix, flagged points are kept out of the baseline and recall became 1.0.
-- Bug 2: the checker looked for a number as a plain substring, so "9" matched inside "2259.0". After the fix it matches number and unit as a whole.
-
-## 4. Failure cases and limits (2-3 lines of your own)
-(Think: what kinds of data would still fool this detector? Example: slow gradual growth, or a daily peak that looks unusual.)
+## 4. Failure cases and limits
+I tested these on 21 Nov by injecting artificial data; they are not from real systems.
+- Slow drift: when latency grew by 600 ms over 8 hours, none of 480 minutes was flagged, because the baseline follows the slow change. A trend or static threshold alert is needed for this.
+- Short real incidents: a 2-minute error burst is not flagged, because the 3-minute rule that removes one-off spikes also hides short real events.
+- The thresholds (z = 4, 3 minutes, 800 ms, 5%) were chosen by hand on one synthetic day; real data may need retuning, and the perfect scores come from clean data with one obvious incident.
 
 ## 5. Two weaknesses improved
-1. (Bug 1 above)
-2. (Bug 2 above)
+1. Detector baseline contamination (Bug 1): recall went from 0.12 to 1.0.
+2. Checker substring matching (Bug 2): calculated numbers and wrong units are now caught.
