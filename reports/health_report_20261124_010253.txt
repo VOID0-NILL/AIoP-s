@@ -1,0 +1,11 @@
+Health report generated 2026-11-24 01:02:53
+Input file: metrics/metrics.csv
+Checked sample time: 2026-11-20 10:00:00
+
+cpu_percent=41.6 OK
+memory_percent=53.2 OK
+disk_percent=61.57 OK
+latency_ms=174.0 OK
+error_rate_percent=0.75 OK
+
+Result: OK (exit code 0)

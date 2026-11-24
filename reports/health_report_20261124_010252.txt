@@ -1,0 +1,11 @@
+Health report generated 2026-11-24 01:02:52
+Input file: metrics/metrics.csv
+Checked sample time: 2026-11-20 14:20:00
+
+cpu_percent=83.0 WARNING (>= 70)
+memory_percent=71.5 OK
+disk_percent=61.8 OK
+latency_ms=1905.0 CRITICAL (>= 1000)
+error_rate_percent=19.56 CRITICAL (>= 5)
+
+Result: CRITICAL (exit code 2)
