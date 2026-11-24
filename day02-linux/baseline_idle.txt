@@ -1,0 +1,17 @@
+Tue Nov 24 00:25:59 EST 2026
+--- uptime
+ 00:25:59 up 40 min,  1 user,  load average: 0.08, 0.32, 0.58
+--- memory
+               total        used        free      shared  buff/cache   available
+Mem:           970Mi       469Mi       104Mi       3.3Mi       579Mi       500Mi
+Swap:          974Mi       280Mi       694Mi
+--- disk
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        16G   14G  1.6G  90% /
+--- top processes
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         599  4.3  6.5 374900 64920 tty7     Ssl+ Nov23   1:43 /usr/lib/xorg/Xorg :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+ankit        921  0.9  5.4 969216 54020 ?        Sl   Nov23   0:23 xfwm4 --display :0.0 --sm-client-id 2244fe5da-d540-46b8-9119-baf28646cc29
+ankit       1395  0.5  5.0 454896 50056 ?        Sl   Nov23   0:11 /usr/bin/qterminal
+ankit        960  0.1  2.8 476344 28016 ?        Sl   Nov23   0:02 xfdesktop --display :0.0 --sm-client-id 25e401da7-b366-4e0d-91e1-058d9bc44bc5
+ankit       1046  0.0  2.3 515492 23688 ?        Sl   Nov23   0:01 /usr/bin/python3 /usr/bin/blueman-applet
