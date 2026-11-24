@@ -1,0 +1,40 @@
+=== RUNBOOK 1: HighErrorRate / HighLatency (SIMULATION) ===
+Trigger: alert fired at 2026-11-20 14:09:00
+
+[1] VALIDATE (read-only)
+    health check at alert time -> CRITICAL (exit code 2)
+      cpu_percent=82.6 WARNING (>= 70)
+      latency_ms=1802.0 CRITICAL (>= 1000)
+      error_rate_percent=15.71 CRITICAL (>= 5)
+    most ERROR lines in the 10 minutes before the alert: web-server (10 lines)
+    recent change: 'Deployed fee-service v2.3' at 2026-11-20 13:58:00
+
+[2] SAFE ACTION (needs human approval)
+    Proposed: roll back fee-service to the previous version.
+    APPROVAL REQUIRED: incident manager (see docs/human_approval_policy.md)
+    Simulated approval: GRANTED (mock). Applying rollback to the MOCK state only...
+    mock state is now: {'fee-service': 'v2.2'}
+
+[3] STOP CONDITIONS
+    Stop and escalate if errors rise after the action or more than one service is affected.
+
+[4] VERIFY (uses recorded data after recovery at 2026-11-20 14:55:00)
+    health check -> OK; error rate 0.78%, latency 212.0 ms
+    Close only after the alert stays clear for 10 minutes. Record the cause in the incident report.
+
+=== RUNBOOK 2: DiskAlmostFull (SIMULATION, mock values) ===
+Trigger: mock disk usage 89% (alert threshold 85%)
+
+[1] VALIDATE (read-only)
+    health check -> WARNING (exit code 1)
+    mock du result (GB): /usr 12.0, /opt 0.45, /home 0.43, /var/log 0.19
+    biggest folder is /usr (installed software), not logs -> growth is not from logs
+
+[2] SAFE ACTION (needs human approval)
+    Do NOT delete files by hand. Only propose: rotate/compress old logs after confirming backups.
+    APPROVAL REQUIRED: infra-team lead. NO ACTION TAKEN.
+
+[3] STOP / ESCALATE
+    Disk above 95% -> treat as critical and page infra on-call; growth still rising after cleanup -> request more disk.
+
+[4] VERIFY: disk below 75% and the growth trend understood (see reports/capacity_report.md)
