@@ -23,3 +23,13 @@ See dataflow.png. (Describe the diagram in 4-5 lines.)
 
 ## Sources
 (List each link you read. Mark each statement as a verified fact or my interpretation.)
+
+## 6. My service and data flow
+(See dataflow.png. Describe it in 4-5 lines.)
+
+## Sources
+After a fact from a source, add its number in brackets, e.g. [1]. Mark opinions as "my interpretation".
+1. https://www.ibm.com/think/topics/aiops - (verified fact / my interpretation)
+2. https://cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html -
+3. https://www.techtarget.com/it-infrastructure/tip/Observability-vs-monitoring-Whats-the-difference -
+4. https://www.paloaltonetworks.com/cyberpedia/observability-vs-monitoring-key-differences -
