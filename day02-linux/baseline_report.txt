@@ -34,7 +34,6 @@ tmpfs            98M  112K   97M   1% /run/user/1000
 /dev/sdb1        15G   13G  1.6G  90% /media/ankit/LOCAL HOST
 --- ports
 Netid State  Recv-Q Send-Q                   Local Address:Port Peer Address:Port
-udp   UNCONN 0      0      [fe80::a00:27ff:fe05:75d9]%eth0:546          [::]:*   
 --- top processes
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 ankit       4666  4.0 14.8 2951648 147488 ?      Sl   00:07   4:42 /usr/lib/firefox-esr/firefox-esr
